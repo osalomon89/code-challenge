@@ -17,6 +17,7 @@ A continuación un ejemplo de la representación _JSON_ de un item:
 ```json
 {
   "id": 10,
+  "code": "SAM27324354",
   "title": "Tablet Samsung Galaxy Tab S7",
   "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
   "price": 150000,
@@ -37,25 +38,24 @@ A continuación un ejemplo de la representación _JSON_ de un item:
 #### Reglas sobre artículos
 
 1. Los _ids_ deben ser numéricos generados automáticamente a partir del número 1.
-2. Los campos `title`, `description`, `price`, `stock`, `photos` son obligatórios.
-3. Los campos `createdAt`, `updatedAt` son automáticamente generados por el sistema. La API no debería permitir modificaciones sobre ellos.
-4. El campo `itemType` puede tener los valores {`OWN`, `SELLER`}
+2. Los campos `code`, `title`, `description`, `price`, `stock`, `photos` son obligatórios.
+3. El campo `code` debe ser único.
+4. Los campos `createdAt`, `updatedAt` son automáticamente generados por el sistema. La API no debería permitir modificaciones sobre ellos.
+5. El campo `itemType` puede tener los valores {`OWN`, `SELLER`}
 
 Para propósito del ejercicio vamos a tener algunas reglas sobre si un item es válido o no dependiendo su tipo.
 
-5. Caso en que el item es de un vendedor: `"itemType": "SELLER"`
+6. Caso en que el item es de un vendedor: `"itemType": "SELLER"`
 	
-    5.1. El campo `leader` tiene como valor true o false.
-	
-    5.2. Si el campo `leader` tiene como valor true, el campo `leaderLevel` debe tener uno de los siguientes valores:  `BASIC`, `GOLD` o `PLATINUM`.
+    6.1. El campo `leader` tiene como valor true o false.
+    6.2. Si el campo `leader` tiene como valor true, el campo `leaderLevel` debe tener uno de los siguientes valores:  `BASIC`, `GOLD` o `PLATINUM`.
 
-6. Caso en que el item es propio: `"itemType": "OWN"`
+7. Caso en que el item es propio: `"itemType": "OWN"`
    
-	6.1. El campo `leader` no es obligatorio (puede guardar false por defecto).
+	7.1. El campo `leader` no es obligatorio (puede guardar false por defecto).
+	7.2. El campo `leaderLevel` debe estar vacío.
 
-	6.2. El campo `leaderLevel` debe estar vacío.
-
-7. El campo `status` puede tener los siguientes valores: 
+8. El campo `status` puede tener los siguientes valores: 
  - `ACTIVE`: Un item que cumple con todas las reglas anteriormente descritas y hay stock disponible.
  - `INACTIVE`: Un item que cumple con todas las reglas anteriormente descritas y pero el valor de stock es cero (0). 
 
@@ -75,6 +75,7 @@ _Body_:
 
 ```json
 {
+  "code": "SAM27324354",
   "title": "Tablet Samsung Galaxy Tab S7",
   "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
   "price": 150000,
@@ -106,6 +107,7 @@ _Body_:
 ```json
 {
   "id": 10,
+  "code": "SAM27324354",
   "title": "Tablet Samsung Galaxy Tab S7",
   "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
   "price": 158000,
@@ -164,6 +166,7 @@ La respuesta debe seguir la siguiente estructura de campos:
   "data": [
     {
     "id": 10,
+    "code": "SAM27324354",
     "title": "Tablet Samsung Galaxy Tab S7",
     "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
     "price": 150000,
@@ -281,6 +284,7 @@ _Response_:
   "data": [
     {
     "id": 10,
+    "code": "SAM27324354",
     "title": "Tablet Samsung Galaxy Tab S7",
     "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
     "price": 150000,
