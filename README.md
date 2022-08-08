@@ -26,8 +26,8 @@ A continuación un ejemplo de la representación _JSON_ de un item:
     "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
   ],
   "itemType": "SELLER",
-  "mercadoLider": true,
-  "mercadoLiderLevel": "MercadoLider Platinum",
+  "leader": true,
+  "leaderLevel": "PLATINUM",
   "createdAt": "2020-05-10T04:20:33Z",
   "updatedAt": "2020-05-10T05:30:00Z",
   "status": "ACTIVE"
@@ -45,15 +45,15 @@ Para propósito del ejercicio vamos a tener algunas reglas sobre si un item es v
 
 5. Caso en que el item es de un vendedor: `"itemType": "SELLER"`
 	
-    5.1. El campo `mercadoLider` tiene como valor true o false.
+    5.1. El campo `leader` tiene como valor true o false.
 	
-    5.2. Si el campo `mercadoLider` tiene como valor true, el campo `mercadoLiderLevel` debe tener uno de los siguientes valores:  `MercadoLider`, `MercadoLider Gold` o `MercadoLider Platinum`.
+    5.2. Si el campo `leader` tiene como valor true, el campo `leaderLevel` debe tener uno de los siguientes valores:  `BASIC`, `GOLD` o `PLATINUM`.
 
 6. Caso en que el item es propio: `"itemType": "OWN"`
    
-	6.1. El campo `mercadoLider` no es obligatorio (puede guardar false por defecto).
+	6.1. El campo `leader` no es obligatorio (puede guardar false por defecto).
 
-	6.2. El campo `mercadoLiderLevel` debe estar vacío.
+	6.2. El campo `leaderLevel` debe estar vacío.
 
 7. El campo `status` puede tener los siguientes valores: 
  - `ACTIVE`: Un item que cumple con todas las reglas anteriormente descritas y hay stock disponible.
@@ -84,8 +84,8 @@ _Body_:
     "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
   ],
   "itemType": "SELLER",
-  "mercadoLider": true,
-  "mercadoLiderLevel": "MercadoLider Platinum"
+  "leader": true,
+  "leaderLevel": "PLATINUM"
 }
 ```
 
@@ -116,8 +116,8 @@ _Body_:
         "https://http2.mlstatic.com/D_NQ_NP_2X_849503-MLA48049083262_102021-F.jpg"
   ],
   "itemType": "SELLER",
-  "mercadoLider": true,
-  "mercadoLiderLevel": "MercadoLider Platinum"
+  "leader": true,
+  "leaderLevel": "PLATINUM"
 }
 ```
 
@@ -173,8 +173,8 @@ La respuesta debe seguir la siguiente estructura de campos:
         "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
     ],
     "itemType": "SELLER",
-    "mercadoLider": true,
-    "mercadoLiderLevel": "MercadoLider Platinum",
+    "leader": true,
+    "leaderLevel": "PLATINUM",
     "createdAt": "2020-05-10T04:20:33Z",
     "updatedAt": "2020-05-10T05:30:00Z",
     "status": "ACTIVE"
@@ -251,7 +251,7 @@ POST v1/users/me/favorites
 _Body_:
 ```json
 {
-  "propertyId": 52
+  "itemId": 52
 }
 ```
 
@@ -290,8 +290,8 @@ _Response_:
       "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
     ],
     "itemType": "SELLER",
-    "mercadoLider": true,
-    "mercadoLiderLevel": "MercadoLider Platinum",
+    "leader": true,
+    "leaderLevel": "PLATINUM",
     "createdAt": "2020-05-10T04:20:33Z",
     "updatedAt": "2020-05-10T05:30:00Z",
     "status": "ACTIVE"
