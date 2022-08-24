@@ -106,7 +106,6 @@ _Body_:
 
 ```json
 {
-  "id": 10,
   "code": "SAM27324354",
   "title": "Tablet Samsung Galaxy Tab S7",
   "description": "Galaxy Tab S7 with S Pen SM-t733 12.4 pulgadas y 4GB de memoria RAM",
