@@ -26,38 +26,21 @@ A continuación un ejemplo de la representación _JSON_ de un item:
     "https://http2.mlstatic.com/D_NQ_NP_729539-MLA48049063325_102021-O.jpg",
     "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
   ],
-  "itemType": "SELLER",
-  "leader": true,
-  "leaderLevel": "PLATINUM",
-  "createdAt": "2020-05-10T04:20:33Z",
-  "updatedAt": "2020-05-10T05:30:00Z",
+  "created_at": "2020-05-10T04:20:33Z",
+  "updated_at": "2020-05-10T05:30:00Z",
   "status": "ACTIVE"
 }
 ```
 
 #### Reglas sobre artículos
 
-1. Los _ids_ deben ser numéricos generados automáticamente a partir del número 1.
+1. Los _ids_ deben ser generados automáticamente.
 2. Los campos `code`, `title`, `description`, `price`, `stock`, `photos` son obligatórios.
 3. El campo `code` debe ser único.
-4. Los campos `createdAt`, `updatedAt` son automáticamente generados por el sistema. La API no debería permitir modificaciones sobre ellos.
-5. El campo `itemType` puede tener los valores {`OWN`, `SELLER`}
-
-Para propósito del ejercicio vamos a tener algunas reglas sobre si un item es válido o no dependiendo su tipo.
-
-6. Caso en que el item es de un vendedor: `"itemType": "SELLER"`
-	
-    6.1. El campo `leader` tiene como valor true o false.
-    6.2. Si el campo `leader` tiene como valor true, el campo `leaderLevel` debe tener uno de los siguientes valores:  `BASIC`, `GOLD` o `PLATINUM`.
-
-7. Caso en que el item es propio: `"itemType": "OWN"`
-   
-	7.1. El campo `leader` no es obligatorio (puede guardar false por defecto).
-	7.2. El campo `leaderLevel` debe estar vacío.
-
-8. El campo `status` puede tener los siguientes valores: 
- - `ACTIVE`: Un item que cumple con todas las reglas anteriormente descritas y hay stock disponible.
- - `INACTIVE`: Un item que cumple con todas las reglas anteriormente descritas y pero el valor de stock es cero (0). 
+4. Los campos `created_at`, `updated_at` son automáticamente generados por el sistema. La API no debería permitir modificaciones sobre ellos.
+5. El campo `status` puede tener los siguientes valores: 
+ - `ACTIVE`: Un item que tiene stock disponible.
+ - `INACTIVE`: Un item que el valor de stock es cero (0). 
 
 
 #### Desafío
@@ -83,10 +66,7 @@ _Body_:
   "photos": [
     "https://http2.mlstatic.com/D_NQ_NP_729539-MLA48049063325_102021-O.jpg",
     "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
-  ],
-  "itemType": "SELLER",
-  "leader": true,
-  "leaderLevel": "PLATINUM"
+  ]
 }
 ```
 
@@ -115,10 +95,7 @@ _Body_:
     "https://http2.mlstatic.com/D_NQ_NP_729539-MLA48049063325_102021-O.jpg",
     "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg",
         "https://http2.mlstatic.com/D_NQ_NP_2X_849503-MLA48049083262_102021-F.jpg"
-  ],
-  "itemType": "SELLER",
-  "leader": true,
-  "leaderLevel": "PLATINUM"
+  ]
 }
 ```
 
@@ -174,11 +151,8 @@ La respuesta debe seguir la siguiente estructura de campos:
         "https://http2.mlstatic.com/D_NQ_NP_729539-MLA48049063325_102021-O.jpg",
         "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
     ],
-    "itemType": "SELLER",
-    "leader": true,
-    "leaderLevel": "PLATINUM",
-    "createdAt": "2020-05-10T04:20:33Z",
-    "updatedAt": "2020-05-10T05:30:00Z",
+    "created_at": "2020-05-10T04:20:33Z",
+    "updated_at": "2020-05-10T05:30:00Z",
     "status": "ACTIVE"
     }
   ]
@@ -292,11 +266,8 @@ _Response_:
       "https://http2.mlstatic.com/D_NQ_NP_729539-MLA48049063325_102021-O.jpg",
       "https://http2.mlstatic.com/D_NQ_NP_879745-MLA48049070326_102021-O.jpg"
     ],
-    "itemType": "SELLER",
-    "leader": true,
-    "leaderLevel": "PLATINUM",
-    "createdAt": "2020-05-10T04:20:33Z",
-    "updatedAt": "2020-05-10T05:30:00Z",
+    "created_at": "2020-05-10T04:20:33Z",
+    "updated_at": "2020-05-10T05:30:00Z",
     "status": "ACTIVE"
     }
   ]
@@ -309,10 +280,7 @@ Esperamos que el código que usted va a crear sea considerado por usted como _"P
 
 Para la evaluación de su código, esperamos que su código sea portable. Esperamos que usted nos provea un comando para correr fácilmente en el ambiente local, la solución del problema.
 
-Para el desarrollo del desafío usted puede utilizar alguna de las siguientes lenguajes de programación:
-
-- Golang, 
-- Java
+Para el desarrollo del desafío vamos a utilizar Golang como lenguaje.
 
 Dentro de los criterios que vamos a tener en cuenta a la hora de revisar su código, revisaremos:
 
@@ -320,4 +288,4 @@ Dentro de los criterios que vamos a tener en cuenta a la hora de revisar su cód
 - Organización y estructura del proyecto
 - Mantenibilidad
 - Facilidad para hacer tests
-- Valoraremos adicionalmente si usa alguna arquitectura limpia.
+- Valoraremos adicionalmente si usa alguna arquitectura limpia (ej. arquitectura hexagonal).
